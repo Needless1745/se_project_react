@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/CabinetGrotesk-Regular.woff") format("truetype");
+}
+
+@font-face {
+  font-family: "Grotesk Medium";
+  font-style: medium;
+  font-weight: 500;
+  src: url("../vendor/fonts/CabinetGrotesk-Medium.woff") format("truetype");
+}
+
+@font-face {
+  font-family: "Grotesk Bold";
+  font-style: bold;
+  font-weight: 500;
+  src: url("../vendor/fonts/CabinetGrotesk-Bold.woff") format("truetype");
+}
