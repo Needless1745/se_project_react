@@ -1,4 +1,5 @@
 import "./ItemModal.css";
+import closeIcon from "../../assets/itemModal__exit.png";
 
 function ItemModal({ activeModal, onClose, card }) {
   return (
@@ -6,9 +7,12 @@ function ItemModal({ activeModal, onClose, card }) {
       className={`modal ${activeModal === "preview" ? "modal__opened" : ""}`}
     >
       <div className="modal__content modal__content_type_image">
-        <button type="button" className="modal__close" onClick={onClose}>
-          CLOSE
-        </button>
+        <button
+          type="button"
+          className="modal__close_type_preview"
+          onClick={onClose}
+          aria-label="Close"
+        ></button>
         <img src={card.link} alt="{card.name}" className="modal__image" />
 
         <div className="modal__footer">
