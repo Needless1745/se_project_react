@@ -8,8 +8,6 @@ function ModalWithForm({
   activeModal,
   handleCloseClick,
 }) {
-  const isOpen = activeModal === "add-garment";
-
   return (
     <div
       className={`modal ${

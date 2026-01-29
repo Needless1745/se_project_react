@@ -1,4 +1,11 @@
 .header {
+  font:
+    Cabinet Grotesk,
+    Arial,
+    Sans-Serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
   display: flex;
   align-items: center;
   padding: 32px 0 28px;
@@ -13,6 +20,10 @@
 }
 
 .header__add-clothes-btn {
+  font: "Cabinet Grotesk", Arial, Sans-Serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
   margin-left: auto;
   margin: 0 20px 0 auto;
   border-style: none;
