@@ -9,9 +9,10 @@
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  z-index: 1000;
 }
 
-.modal_opened {
+.modal__opened {
   visibility: visible;
 }
 

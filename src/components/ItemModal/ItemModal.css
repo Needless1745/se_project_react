@@ -1,4 +1,4 @@
-.modal__content_type_image {
+.modal__content .modal__Content_type_image {
   padding: 0;
   width: 498px;
   border-radius: 16px;
@@ -6,7 +6,7 @@
 }
 
 .modal__image {
-  height: 498px;
+  height: 100%;
   width: 498px;
   display: block;
   object-fit: cover;
