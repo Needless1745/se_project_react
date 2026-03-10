@@ -19,6 +19,12 @@
   margin: 0;
 }
 
+.header__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 .header__add-clothes-btn {
   font: "Cabinet Grotesk", Arial, Sans-Serif;
   font-weight: 700;
