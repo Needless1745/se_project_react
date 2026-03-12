@@ -15,6 +15,11 @@
   margin-right: 24px;
 }
 
+.header__nav-link {
+  text-decoration: none;
+  color: black;
+}
+
 .header__date-and-location {
   margin: 0;
 }
