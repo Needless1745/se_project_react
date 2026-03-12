@@ -12,6 +12,12 @@
   z-index: 1000;
 }
 
+.modal__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
 .modal__opened {
   visibility: visible;
 }
@@ -36,7 +42,7 @@
   background-color: #fff;
   position: relative;
   padding: 28px 28px 36px;
-  max-width: 496px;
+  max-width: 670px;
   box-sizing: border-box;
   width: 100%;
   border-radius: 20px;

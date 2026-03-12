@@ -10,8 +10,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-
-import { defaultClothingItems } from "../../utils/constants";
+import { addItem, deleteItem, getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -20,7 +19,7 @@ function App() {
     city: "",
   });
 
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -38,15 +37,34 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const onAddItem = (inputValues) => {
-    const newCardData = {
-      name: inputValues.name,
-      link: inputValues.link,
-      weather: inputValues.weather,
-    };
+  const handleDeleteClick = (card) => {
+    setSelectedCard(card);
+  };
 
-    setClothingItems([...clothingItems, inputValues]);
-    closeActiveModal();
+  const onAddItem = (inputValues) => {
+    addItem(inputValues)
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleDeleteItem = (item = selectedCard) => {
+    const id = item?._id ?? item?.id;
+    if (!id) {
+      return;
+    }
+    deleteItem(id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter(
+            (existingItem) => (existingItem._id ?? existingItem.id) !== id,
+          ),
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const closeActiveModal = () => setActiveModal("");
@@ -56,6 +74,18 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+
+    getItems()
+      .then((data) => {
+        const normalizedItems = data
+          .map((item) => ({
+            ...item,
+            imageUrl: item.imageUrl ?? item.link,
+          }))
+          .reverse();
+        setClothingItems(normalizedItems);
       })
       .catch(console.error);
   }, []);
@@ -100,7 +130,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          onAddItem={onAddItem}
+          onDeleteClick={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
