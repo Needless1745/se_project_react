@@ -40,6 +40,11 @@
   border-style: none;
   cursor: pointer;
   background-color: transparent;
+  transition: opacity 0.3s;
+}
+
+.header__add-clothes-btn:hover {
+  opacity: 50%;
 }
 
 .header__user-container {
@@ -50,4 +55,9 @@
 
 .header__username {
   margin: 0;
+  transition: opacity 0.3s;
+}
+
+.header__username:hover {
+  opacity: 50%;
 }
