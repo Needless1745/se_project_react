@@ -8,7 +8,8 @@ The application also includes a User Profile route implemented with React Router
 
 # Tech Stack:
 
-Frontend
+-Frontend:-
+
 \-React (Functional Components + Hooks)
 \-JavaScript (ES6+)
 \-HTML5
@@ -16,14 +17,15 @@ Frontend
 \-Routing
 \-React Router for client-side navigation and profile page routing
 
-API Integration:
+-API Integration:-
 \-OpenWeather API for fetching real-time weather data (temperature and conditions)
 \-Asynchronous data handling using Promises and fetch
 
-State Management:
+-State Management:-
+
 \-React Hooks (useState, useEffect) for managing weather data, clothing items, and UI state
 
-Forms & Validation
+<ins>Forms & Validation:</ins>
 
 \-Controlled components for managing user input
 \-Dynamic form submission for adding clothing items
@@ -31,6 +33,8 @@ Forms & Validation
 \-Vite / Webpack (depending on what your WTWR uses)
 \-Git & GitHub for version control
 \-GitHub Pages for deployment
+
+# ScreenShots:
 
 # Local Deploy:
 
