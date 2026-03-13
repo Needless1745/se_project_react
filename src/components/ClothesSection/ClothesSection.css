@@ -11,7 +11,7 @@
 }
 
 .clothes-section__btn:hover {
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .clothes-section__row {

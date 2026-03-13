@@ -35,7 +35,6 @@
   font-weight: 700;
   font-style: normal;
   font-size: 20px;
-  margin-left: auto;
   margin: 0 20px 0 auto;
   border-style: none;
   cursor: pointer;
@@ -44,7 +43,7 @@
 }
 
 .header__add-clothes-btn:hover {
-  opacity: 50%;
+  opacity: 0.5;
 }
 
 .header__user-container {
@@ -59,5 +58,5 @@
 }
 
 .header__username:hover {
-  opacity: 50%;
+  opacity: 0.5;
 }

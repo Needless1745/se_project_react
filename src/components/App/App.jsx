@@ -44,7 +44,7 @@ function App() {
   const onAddItem = (inputValues) => {
     addItem(inputValues)
       .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+        setClothingItems((prev) => [newItem, ...prev]);
         closeActiveModal();
       })
       .catch(console.error);

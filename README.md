@@ -1,12 +1,41 @@
 # WTWR(What to Wear?) via React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based weather application that uses the OpenWeather API to fetch real-time weather data such as temperature and current conditions. The app allows users to switch between Fahrenheit and Celsius using a toggle located in the header, updating the UI dynamically based on the selected unit.
 
-Currently, two official plugins are available:
+Users can add clothing items by submitting a garment name, image URL, and weather type, allowing the app to organize wardrobe choices around specific weather conditions. Each item is rendered through reusable React components and stored in application state to support interactive updates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application also includes a User Profile route implemented with React Router, where users can view a list of previously added garments and delete items as needed.
 
-# GH Pages Deploy:
+# Tech Stack:
 
-https://needless1745.github.io/se_project_react/
+Frontend
+\-React (Functional Components + Hooks)
+\-JavaScript (ES6+)
+\-HTML5
+\-CSS3 (Responsive Layout / Flexbox)
+\-Routing
+\-React Router for client-side navigation and profile page routing
+
+API Integration:
+\-OpenWeather API for fetching real-time weather data (temperature and conditions)
+\-Asynchronous data handling using Promises and fetch
+
+State Management:
+\-React Hooks (useState, useEffect) for managing weather data, clothing items, and UI state
+
+Forms & Validation
+
+\-Controlled components for managing user input
+\-Dynamic form submission for adding clothing items
+\-Development Tools
+\-Vite / Webpack (depending on what your WTWR uses)
+\-Git & GitHub for version control
+\-GitHub Pages for deployment
+
+# Local Deploy:
+
+Paste the following into Terminal:
+
+1. "npm install -g json-server@^0"
+2. "json-server --watch db.json --id \_id --port 3001"
+3. "npm run dev"
