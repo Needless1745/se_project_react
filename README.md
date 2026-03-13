@@ -37,10 +37,10 @@ The application also includes a User Profile route implemented with React Router
 
 # ScreenShots:
 
-![alt text](src\assets\screenshots\Homepage.png)
-![alt text](src\assets\screenshots\Homepage_C.png)
-![alt text](src\assets\screenshots\Profile.png)
-![alt text](src\assets\screenshots\Item-Modal.png)
+![alt text](src/assets/screenshots/Homepage.png)
+![alt text](src/assets/screenshots/Homepage_C.png)
+![alt text](src/assets/screenshots/Item-Modal.png)
+![alt text](src/assets/screenshots/Profile.png)
 
 # Local Deploy:
 
