@@ -8,7 +8,7 @@ The application also includes a User Profile route implemented with React Router
 
 # Tech Stack:
 
--Frontend:-
+<ins>Frontend:</ins>
 
 \-React (Functional Components + Hooks)
 \-JavaScript (ES6+)
@@ -17,11 +17,12 @@ The application also includes a User Profile route implemented with React Router
 \-Routing
 \-React Router for client-side navigation and profile page routing
 
--API Integration:-
+<ins>API Integration:</ins>
+
 \-OpenWeather API for fetching real-time weather data (temperature and conditions)
 \-Asynchronous data handling using Promises and fetch
 
--State Management:-
+<ins>State Management:</ins>
 
 \-React Hooks (useState, useEffect) for managing weather data, clothing items, and UI state
 
@@ -35,6 +36,11 @@ The application also includes a User Profile route implemented with React Router
 \-GitHub Pages for deployment
 
 # ScreenShots:
+
+![alt text](src\assets\screenshots\Homepage.png)
+![alt text](src\assets\screenshots\Homepage_C.png)
+![alt text](src\assets\screenshots\Profile.png)
+![alt text](src\assets\screenshots\Item-Modal.png)
 
 # Local Deploy:
 
