@@ -42,6 +42,14 @@ The application also includes a User Profile route implemented with React Router
 ![alt text](src/assets/screenshots/Item-Modal.png)
 ![alt text](src/assets/screenshots/Profile.png)
 
+# Project Pitch Video
+
+// Source - https://stackoverflow.com/a/38297490
+// Posted by lmcarreiro, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-14, License - CC BY-SA 3.0
+
+<p>Check out my <a href="https://www.loom.com/share/aab1fec5d17f4d17b4fedf92c67d51c6">here</a>Pitch Video.</p>
+
 # Local Deploy:
 
 Paste the following into Terminal:

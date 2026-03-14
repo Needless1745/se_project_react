@@ -2,32 +2,27 @@
 
 @font-face {
   font-family: "Cabinet Grotesk";
-  src:
-    url("./vendor/fonts/CabinetGrotesk-Regular.woff2") format("woff2"),
-    url("./vendor/fonts/CabinetGrotesk-Regular.woff") format("woff");
+  src: url("./vendor/fonts/CabinetGrotesk-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Cabinet Grotesk";
-  src:
-    url("./vendor/fonts/CabinetGrotesk-Medium.woff2") format("woff2"),
-    url("./vendor/fonts/CabinetGrotesk-Medium.woff") format("woff");
+  src: url("./vendor/fonts/CabinetGrotesk-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Cabinet Grotesk";
-  src:
-    url("./vendor/fonts/CabinetGrotesk-Bold.woff2") format("woff2"),
-    url("./vendor/fonts/CabinetGrotesk-Bold.woff") format("woff");
+  src: url("./vendor/fonts/CabinetGrotesk-Bold.woff") format("woff");
   font-weight: 700;
-  font-style: normal; /* ← Also fix this from "bold" */
+  font-style: normal;
 }
 
 body {
   margin: 0;
+
   font-family: "Cabinet Grotesk", Arial, sans-serif;
 }
