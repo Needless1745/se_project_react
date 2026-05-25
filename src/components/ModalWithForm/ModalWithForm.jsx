@@ -9,8 +9,8 @@ function ModalWithForm({
   isOpen,
   children,
   onSubmit,
-  alternateBtnText,
-  onAlternateBtnClick,
+  altBtnText,
+  onAltBtnClick,
 }) {
   return (
     <div
@@ -28,18 +28,20 @@ function ModalWithForm({
 
         <form onSubmit={onSubmit} className="modal__form" name={name}>
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
-          {alternateBtnText && (
-            <button
-              type="button"
-              className="modal__alternate-button"
-              onClick={onAlternateBtnClick}
-            >
-              {alternateBtnText}
+          <div className="modal__actions">
+            <button type="submit" className="modal__submit">
+              {buttonText}
             </button>
-          )}
+            {altBtnText && (
+              <button
+                type="button"
+                className="modal__alt-btn"
+                onClick={onAltBtnClick}
+              >
+                {altBtnText}
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>

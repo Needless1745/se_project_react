@@ -36,8 +36,8 @@ const LoginModal = ({ isOpen, onClose, onLogin, registerModalSwitch }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      alternateBtnText={"or Sign up"}
-      onAlternateBtnClick={registerModalSwitch}
+      altBtnText={"or Sign up"}
+      onAltBtnClick={registerModalSwitch}
     >
       <label className="modal__label">
         Email

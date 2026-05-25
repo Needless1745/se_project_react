@@ -9,14 +9,14 @@ export const handleServerResponse = (res) => {
 export const getItems = () =>
   fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
 
-export const addItem = ({ name, imageUrl, weather }) =>
+export const addItem = ({ name, imageUrl, weather }, token) =>
   fetch(`${baseUrl}/items`, {
     method: "POST",
     headers,
     body: JSON.stringify({ name, imageUrl, weather }),
   }).then(handleServerResponse);
 
-export const deleteItem = (id) =>
+export const deleteItem = (id, token) =>
   fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers,

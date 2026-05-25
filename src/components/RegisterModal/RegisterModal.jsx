@@ -13,7 +13,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister, loginModalSwitch }) => {
 
   useEffect(() => {
     if (!isOpen) {
-      setValues(defaultValues);
+      setValues(defaultValues, {}, true);
     }
   }, [isOpen]);
 
@@ -38,8 +38,8 @@ const RegisterModal = ({ isOpen, onClose, onRegister, loginModalSwitch }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      alternateBtnText={"or Log in"}
-      onAlternateBtnClick={loginModalSwitch}
+      altBtnText="or Log in"
+      onAltBtnClick={loginModalSwitch}
     >
       <label className="modal__label">
         Email*

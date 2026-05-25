@@ -1,14 +1,24 @@
 import "./Header.css";
-import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.png";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import logo from "../../assets/logo.svg";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  handleRegisterClick,
+  handleLoginClick,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  const currentUser = useContext(CurrentUserContext);
+  const userInitial = currentUser?.name?.[0]?.toUpperCase();
 
   return (
     <header className="header">
@@ -20,23 +30,54 @@ function Header({ handleAddClick, weatherData }) {
       </p>
       <div className="header__right">
         <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add clothes
-        </button>
-        <NavLink className="header__nav-link" to="/profile">
-          <div className="header__user-container">
-            <p className="header__username">Terrence Tegegne</p>
-            <img
-              src={avatar}
-              alt="Terrence Tegegne"
-              className="header__avatar"
-            />
-          </div>
-        </NavLink>
+
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add clothes
+            </button>
+
+            <NavLink className="header__nav-link" to="/profile">
+              <div className="header__user-container">
+                <p className="header__username">{currentUser?.name}</p>
+
+                {currentUser?.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="header__avatar"
+                  />
+                ) : (
+                  <div className="header__avatar-placeholder">
+                    {userInitial}
+                  </div>
+                )}
+              </div>
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <button
+              type="button"
+              className="header__auth-btn"
+              onClick={handleRegisterClick}
+            >
+              Sign up
+            </button>
+
+            <button
+              type="button"
+              className="header__auth-btn"
+              onClick={handleLoginClick}
+            >
+              Log in
+            </button>
+          </>
+        )}
       </div>
     </header>
   );
