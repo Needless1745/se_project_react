@@ -44,12 +44,4 @@ The application also includes a User Profile route implemented with React Router
 
 # Project Pitch Video
 
-<p> <a href="https://www.loom.com/share/aab1fec5d17f4d17b4fedf92c67d51c6">Check out my pitch video here.</a></p>
-
-# Local Deploy:
-
-Paste the following into Terminal:
-
-1. "npm install -g json-server@^0"
-2. "json-server --watch db.json --id \_id --port 3001"
-3. "npm run dev"
+<p>Check out my <a href="https://www.loom.com/share/aab1fec5d17f4d17b4fedf92c67d51c6">here</a>Pitch Video.</p>
