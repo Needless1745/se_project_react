@@ -107,3 +107,7 @@
   background-color: black;
   cursor: pointer;
 }
+
+.modal__alternate-button:hover {
+  cursor: pointer;
+}

@@ -9,6 +9,8 @@ function ModalWithForm({
   isOpen,
   children,
   onSubmit,
+  alternateBtnText,
+  onAlternateBtnClick,
 }) {
   return (
     <div
@@ -29,6 +31,15 @@ function ModalWithForm({
           <button type="submit" className="modal__submit">
             {buttonText}
           </button>
+          {alternateBtnText && (
+            <button
+              type="button"
+              className="modal__alternate-button"
+              onClick={onAlternateBtnClick}
+            >
+              {alternateBtnText}
+            </button>
+          )}
         </form>
       </div>
     </div>
