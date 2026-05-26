@@ -1,5 +1,5 @@
 //REACT imports
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 //Styling import
@@ -15,11 +15,17 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 import { apiKey, coordinates } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { addItem, deleteItem, getItems } from "../../utils/api";
+import {
+  addItem,
+  deleteItem,
+  getItems,
+  updateUserProfile,
+} from "../../utils/api";
 import { signin, signup, checkToken } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
@@ -29,6 +35,46 @@ function App() {
     temp: { F: 999 },
     city: "",
   });
+
+  useEffect(() => {
+    getWeather(coordinates, apiKey)
+      .then((data) => {
+        const filteredData = filterWeatherData(data);
+        setWeatherData(filteredData);
+      })
+      .catch(console.error);
+
+    getItems()
+      .then((data) => {
+        const normalizedItems = data
+          .map((item) => ({
+            ...item,
+            imageUrl: item.imageUrl ?? item.link,
+          }))
+          .reverse();
+        setClothingItems(normalizedItems);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (!token) return;
+
+    checkToken(token)
+      .then((userData) => {
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+      })
+      .catch(() => {
+        localStorage.removeItem("jwt");
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+      });
+  }, []);
+
+  const navigate = useNavigate();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -119,6 +165,28 @@ function App() {
       });
   };
 
+  const handleEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
+  const handleUpdateProfile = (values) => {
+    const token = localStorage.getItem("jwt");
+
+    updateUserProfile(values, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+    navigate("/");
+  };
+
   const loginModalSwitch = () => {
     setActiveModal("login");
   };
@@ -127,28 +195,11 @@ function App() {
     setActiveModal("register");
   };
 
+  const onEditProfileClick = () => {
+    setActiveModal("edit-profile");
+  };
+
   const closeActiveModal = () => setActiveModal("");
-
-  useEffect(() => {
-    getWeather(coordinates, apiKey)
-      .then((data) => {
-        const filteredData = filterWeatherData(data);
-        setWeatherData(filteredData);
-      })
-      .catch(console.error);
-
-    getItems()
-      .then((data) => {
-        const normalizedItems = data
-          .map((item) => ({
-            ...item,
-            imageUrl: item.imageUrl ?? item.link,
-          }))
-          .reverse();
-        setClothingItems(normalizedItems);
-      })
-      .catch(console.error);
-  }, []);
 
   return (
     <CurrentTemperatureUnitContext.Provider
@@ -183,6 +234,8 @@ function App() {
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       onAddClick={handleAddClick}
+                      onEditProfileClick={handleEditProfileClick}
+                      onSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
@@ -215,6 +268,11 @@ function App() {
             card={selectedCard}
             onClose={closeActiveModal}
             onDeleteClick={handleDeleteItem}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit-profile"}
+            onClose={closeActiveModal}
+            onUpdateProfile={handleUpdateProfile}
           />
         </div>
       </CurrentUserContext.Provider>

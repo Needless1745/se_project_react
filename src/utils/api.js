@@ -21,3 +21,13 @@ export const deleteItem = (id, token) =>
     method: "DELETE",
     headers,
   }).then(handleServerResponse);
+
+export const updateUserProfile = ({ name, avatar }, token) =>
+  fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(handleServerResponse);
