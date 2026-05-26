@@ -111,6 +111,25 @@ function App() {
       .catch(console.error);
   };
 
+  const handleCardLike = ({ id, _id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    const itemId = _id ?? id;
+
+    const likeRequest = isLiked
+      ? removeCardLike(itemId, token)
+      : addCardLike(itemId, token);
+
+    likeRequest
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) =>
+            (item._id ?? item.id) === itemId ? updatedCard : item,
+          ),
+        );
+      })
+      .catch(console.error);
+  };
+
   const handleDeleteItem = (item = selectedCard) => {
     const token = localStorage.getItem("jwt");
     const id = item?._id ?? item?.id;

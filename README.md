@@ -45,3 +45,7 @@ The application also includes a User Profile route implemented with React Router
 # Project Pitch Video
 
 <p>Check out my <a href="https://www.loom.com/share/aab1fec5d17f4d17b4fedf92c67d51c6">here</a>Pitch Video.</p>
+
+# Backend Repo:
+
+<p><a href="https://github.com/Needless1745/se_project_express"> Access to backend repo here.</a></p>
