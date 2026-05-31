@@ -25,6 +25,8 @@ import {
   deleteItem,
   getItems,
   updateUserProfile,
+  addCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import { signin, signup, checkToken } from "../../utils/auth";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -137,7 +139,7 @@ function App() {
     if (!id) {
       return;
     }
-    deleteItem(id)
+    deleteItem(id, token)
       .then(() => {
         setClothingItems(
           clothingItems.filter(
@@ -214,10 +216,6 @@ function App() {
     setActiveModal("register");
   };
 
-  const onEditProfileClick = () => {
-    setActiveModal("edit-profile");
-  };
-
   const closeActiveModal = () => setActiveModal("");
 
   return (
@@ -242,6 +240,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -254,6 +253,7 @@ function App() {
                       clothingItems={clothingItems}
                       onAddClick={handleAddClick}
                       onEditProfileClick={handleEditProfileClick}
+                      onCardLike={handleCardLike}
                       onSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
@@ -269,7 +269,6 @@ function App() {
             registerModalSwitch={registerModalSwitch}
           />
           <AddItemModal
-            buttonText="Add garment"
             onClose={closeActiveModal}
             isOpen={activeModal === "add-garment"}
             onAddItem={onAddItem}

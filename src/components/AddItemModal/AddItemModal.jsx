@@ -36,6 +36,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      buttonText="Add garment"
     >
       <label htmlFor="name" className="modal__label">
         Name

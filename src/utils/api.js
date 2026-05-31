@@ -12,7 +12,10 @@ export const getItems = () =>
 export const addItem = ({ name, imageUrl, weather }, token) =>
   fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers,
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({ name, imageUrl, weather }),
   }).then(handleServerResponse);
 

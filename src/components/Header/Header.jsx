@@ -1,5 +1,5 @@
 import "./Header.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
@@ -18,7 +18,9 @@ function Header({
   });
 
   const currentUser = useContext(CurrentUserContext);
-  const userInitial = currentUser?.name?.[0]?.toUpperCase();
+  const [avatarError, setAvatarError] = useState(false);
+  const userInitial = currentUser?.name?.charAt(0)?.toUpperCase();
+  const fallbackAvatar = !currentUser?.avatar || avatarError;
 
   return (
     <header className="header">
@@ -44,17 +46,20 @@ function Header({
             <NavLink className="header__nav-link" to="/profile">
               <div className="header__user-container">
                 <p className="header__username">{currentUser?.name}</p>
-
-                {currentUser?.avatar ? (
+                {fallbackAvatar ? (
+                  <div
+                    className=".header__avatar-placeholder {
+"
+                  >
+                    {userInitial}
+                  </div>
+                ) : (
                   <img
                     src={currentUser.avatar}
                     alt={currentUser.name}
                     className="header__avatar"
+                    onError={() => setAvatarError(true)}
                   />
-                ) : (
-                  <div className="header__avatar-placeholder">
-                    {userInitial}
-                  </div>
                 )}
               </div>
             </NavLink>

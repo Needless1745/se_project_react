@@ -9,6 +9,7 @@ export default function Profile({
   onCardLike,
   onEditProfileClick,
   onSignOut,
+  fallbacKAvatar,
 }) {
   return (
     <section className="profile">
@@ -18,6 +19,7 @@ export default function Profile({
         clothingItems={clothingItems}
         onAddClick={onAddClick}
         onCardLike={onCardLike}
+        onError={fallbacKAvatar}
       />
     </section>
   );

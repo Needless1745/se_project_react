@@ -9,12 +9,16 @@ function EditProfileModal({ isOpen, onClose, onUpdateProfile }) {
   };
 
   const [values, setValues] = useState(defaultValues);
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    if (!isOpen) {
-      setValues(defaultValues);
+    if (isOpen && currentUser) {
+      setValues({
+        name: currentUser.name || "",
+        avatar: currentUser.avatar || "",
+      });
     }
-  }, [isOpen]);
+  }, [isOpen, currentUser]);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
